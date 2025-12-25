@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export const MobileAwareCursor = () => {
-    const [position, setPosition] = useState({ x: 0, y: 0 });
+    // Optimization: Use MotionValues to bypass React render cycle for mouse movement
+    const cursorX = useMotionValue(-100);
+    const cursorY = useMotionValue(-100);
+
+    const springConfig = { damping: 25, stiffness: 700 };
+    const cursorXSpring = useSpring(cursorX, springConfig);
+    const cursorYSpring = useSpring(cursorY, springConfig);
+
     const [isHovering, setIsHovering] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
 
@@ -13,12 +21,14 @@ export const MobileAwareCursor = () => {
         setIsVisible(true);
 
         const onMouseMove = (e) => {
-            setPosition({ x: e.clientX, y: e.clientY });
+            // Update MotionValues directly - NO RE-RENDER
+            cursorX.set(e.clientX);
+            cursorY.set(e.clientY);
         };
 
         const onMouseEnter = (e) => {
-            // Check if target is clickable
             const target = e.target;
+            // Check if target is clickable
             if (
                 target.tagName === 'A' ||
                 target.tagName === 'BUTTON' ||
@@ -32,13 +42,19 @@ export const MobileAwareCursor = () => {
             }
         };
 
-        document.addEventListener('mousemove', onMouseMove);
-        // Use capture to catch events early
+        const onMouseDown = () => setIsHovering(true);
+        const onMouseUp = () => setIsHovering(false);
+
+        window.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseover', onMouseEnter, true);
+        window.addEventListener('mousedown', onMouseDown);
+        window.addEventListener('mouseup', onMouseUp);
 
         return () => {
-            document.removeEventListener('mousemove', onMouseMove);
+            window.removeEventListener('mousemove', onMouseMove);
             document.removeEventListener('mouseover', onMouseEnter, true);
+            window.removeEventListener('mousedown', onMouseDown);
+            window.removeEventListener('mouseup', onMouseUp);
         };
     }, []);
 
@@ -49,30 +65,36 @@ export const MobileAwareCursor = () => {
             <style>{`
         body, a, button { cursor: none !important; }
       `}</style>
-            <div
+
+            <motion.div
                 className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
                 style={{
-                    transform: `translate3d(${position.x}px, ${position.y}px, 0)`
+                    x: cursorXSpring,
+                    y: cursorYSpring,
+                    translateX: '-50%',
+                    translateY: '-50%'
                 }}
             >
                 {/* Main Dot */}
-                <div
-                    className={`
-            w-2 h-2 bg-white rounded-full transition-transform duration-100 ease-out
-            ${isHovering ? 'scale-[0.5]' : 'scale-100'}
-          `}
+                <motion.div
+                    className="w-2 h-2 bg-white rounded-full"
+                    animate={{
+                        scale: isHovering ? 0.5 : 1
+                    }}
+                    transition={{ duration: 0.2 }}
                 />
 
                 {/* Expanding Ring */}
-                <div
-                    className={`
-            absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-            border border-white rounded-full bg-white/10
-            transition-all duration-300 ease-out
-            ${isHovering ? 'w-12 h-12 opacity-100' : 'w-0 h-0 opacity-0'}
-          `}
+                <motion.div
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-white rounded-full bg-white/10"
+                    animate={{
+                        width: isHovering ? 48 : 0,
+                        height: isHovering ? 48 : 0,
+                        opacity: isHovering ? 1 : 0
+                    }}
+                    transition={{ duration: 0.2 }}
                 />
-            </div>
+            </motion.div>
         </>
     );
 };

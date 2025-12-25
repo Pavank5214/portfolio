@@ -1,11 +1,19 @@
-import React, { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useUISound } from '../hooks/useUISound';
 
 export const MagneticWrapper = ({ children, className = "" }) => {
     const ref = useRef(null);
-    const [position, setPosition] = useState({ x: 0, y: 0 });
     const { playHover, playClick } = useUISound();
+
+    // Use MotionValues for performance - avoids React re-renders
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    // Add spring physics for smooth return
+    const springConfig = { damping: 15, stiffness: 150, mass: 0.1 };
+    const xSpring = useSpring(x, springConfig);
+    const ySpring = useSpring(y, springConfig);
 
     const handleMouse = (e) => {
         const { clientX, clientY } = e;
@@ -14,14 +22,15 @@ export const MagneticWrapper = ({ children, className = "" }) => {
         const middleX = clientX - (left + width / 2);
         const middleY = clientY - (top + height / 2);
 
-        setPosition({ x: middleX * 0.5, y: middleY * 0.5 });
+        // Update MotionValues directly
+        x.set(middleX * 0.5);
+        y.set(middleY * 0.5);
     };
 
     const reset = () => {
-        setPosition({ x: 0, y: 0 });
+        x.set(0);
+        y.set(0);
     };
-
-    const { x, y } = position;
 
     return (
         <motion.div
@@ -31,8 +40,7 @@ export const MagneticWrapper = ({ children, className = "" }) => {
             onMouseEnter={playHover}
             onMouseDown={playClick}
             onMouseLeave={reset}
-            animate={{ x, y }}
-            transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+            style={{ x: xSpring, y: ySpring }}
         >
             {children}
         </motion.div>

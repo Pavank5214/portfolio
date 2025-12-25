@@ -38,14 +38,19 @@ function MovingShape() {
 export default function ScrollBackground() {
     return (
         <div className="fixed top-0 left-0 w-full h-full bg-slate-950 -z-10 pointer-events-none opacity-100">
-            <Canvas camera={{ position: [0, 0, 6], fov: 60 }} gl={{ alpha: true }}>
+            <Canvas
+                camera={{ position: [0, 0, 6], fov: 60 }}
+                gl={{ alpha: true, antialias: false }} // Disable antialiasing for performance
+                dpr={[1, 1.5]} // Limit pixel ratio to save GPU
+            >
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[10, 10, 5]} intensity={1.5} />
 
                 <MovingShape />
 
                 {/* Add some subtle stars in the deep background */}
-                <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+                {/* Reduced count from 5000 to 1000 for performance */}
+                <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={1} />
 
                 {/* Environment for realistic reflections */}
                 <Environment preset="city" />

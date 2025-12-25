@@ -61,13 +61,13 @@ const Hero = () => {
           style={{ x: orbX, y: orbY }} // Reacts to mouse
           animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.3, 0.2] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-20 right-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px]"
+          className="absolute top-20 right-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] will-change-transform"
         />
         <motion.div
           style={{ x: orbX, y: orbY }} // Reacts to mouse (inverted for depth effect)
           animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.3, 0.2] }}
           transition={{ duration: 10, repeat: Infinity, delay: 1, ease: "easeInOut" }}
-          className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px]"
+          className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] will-change-transform"
         />
       </div>
 
