@@ -1,8 +1,8 @@
-// FILE: src/components/Hero.jsx
 import React from 'react';
 import { ArrowRight, Download } from 'lucide-react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { MagneticWrapper } from './MagneticWrapper';
+import cvFile from '../assets/PAVAN_KUMAR_K_Full_Stack_Developer.pdf';
 
 const Hero = () => {
   // Mouse Position Setup for Parallax
@@ -15,6 +15,7 @@ const Hero = () => {
     x.set(event.clientX - rect.left - rect.width / 2);
     y.set(event.clientY - rect.top - rect.height / 2);
   };
+
 
   // Transform mouse position into movement for layers
   // The grid moves slowly (feels far away)
@@ -76,7 +77,7 @@ const Hero = () => {
         <div className="max-w-4xl space-y-8 pointer-events-auto"> {/* Re-enable events for buttons/links */}
 
           {/* Status Badge */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -87,7 +88,7 @@ const Hero = () => {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
             System Status: Online & Available
-          </motion.div>
+          </motion.div> */}
 
           {/* Headline */}
           <motion.h1
@@ -136,8 +137,11 @@ const Hero = () => {
               <motion.a
                 whileHover={{ scale: 1.05, backgroundColor: "#1e293b" }} // Slate-800
                 whileTap={{ scale: 0.95 }}
-                href="/resume.pdf"
+                href={cvFile}
+                download="Pavan_Kumar_K_CV.pdf"
                 className="px-8 py-4 bg-slate-900 text-white font-medium rounded-lg border border-slate-700 flex items-center gap-2 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Download CV <Download size={20} />
               </motion.a>

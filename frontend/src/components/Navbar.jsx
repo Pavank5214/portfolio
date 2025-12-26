@@ -1,7 +1,7 @@
 // FILE: src/components/Navbar.jsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, Menu, X, Github, Linkedin, Twitter } from 'lucide-react';
+import { Terminal, Menu, X, Github, Linkedin } from 'lucide-react';
 import { MagneticWrapper } from './MagneticWrapper';
 import { useUISound } from '../hooks/useUISound';
 
@@ -10,10 +10,11 @@ const Navbar = () => {
   const { playHover, playClick } = useUISound();
 
   const navLinks = [
+    { name: 'Home', href: '#' },
     { name: 'About me', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Source Code', href: 'https://github.com/yourusername/portfolio', external: true },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (
@@ -37,7 +38,7 @@ const Navbar = () => {
               <Terminal size={22} className="text-cyan-400" />
             </div>
             <span className="font-bold text-lg text-slate-100 tracking-tight">
-              John Doe
+              Pavan Kumar K<span className="text-emerald-400">.</span>
             </span>
           </a>
 
@@ -47,8 +48,6 @@ const Navbar = () => {
               <MagneticWrapper key={link.name}>
                 <a
                   href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  rel={link.external ? "noreferrer" : undefined}
                   className="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-white/10 rounded-full transition-all"
                   onMouseEnter={playHover}
                   onClick={playClick}
@@ -63,58 +62,25 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-4 relative z-20">
             <MagneticWrapper>
               <a
-                href="https://instagram.com"
+                href="https://github.com/Pavank5214"
                 target="_blank"
                 rel="noreferrer"
                 className="text-slate-400 hover:text-white transition-colors"
                 onMouseEnter={playHover}
               >
-                {/* Replaced Github with Instagram based on image usually, but sticking to standard icons requested or generic */}
-                {/* Image had generic icons. Let's use what we had but maybe generic loop? */}
-                {/* Image shows: Instagram, Facebook, Twitter. I'll stick to relevant dev ones + maybe twitter/socials matching existing */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20" height="20"
-                  viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                  className="lucide lucide-instagram"
-                >
-                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.51" />
-                </svg>
+                <Github size={20} />
               </a>
             </MagneticWrapper>
 
             <MagneticWrapper>
               <a
-                href="https://facebook.com"
+                href="https://www.linkedin.com/in/pavan-kumar-k-870a95278/"
                 target="_blank"
                 rel="noreferrer"
                 className="text-slate-400 hover:text-white transition-colors"
                 onMouseEnter={playHover}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20" height="20"
-                  viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                  className="lucide lucide-facebook"
-                >
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                </svg>
-              </a>
-            </MagneticWrapper>
-
-            <MagneticWrapper>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noreferrer"
-                className="text-slate-400 hover:text-white transition-colors"
-                onMouseEnter={playHover}
-              >
-                <Twitter size={20} />
+                <Linkedin size={20} />
               </a>
             </MagneticWrapper>
 
@@ -157,6 +123,16 @@ const Navbar = () => {
                 {link.name}
               </motion.a>
             ))}
+
+            {/* Mobile Socials */}
+            <div className="flex gap-8 mt-4">
+              <a href="https://github.com/Pavank5214" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white">
+                <Github size={28} />
+              </a>
+              <a href="https://www.linkedin.com/in/pavan-kumar-k-870a95278/" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white">
+                <Linkedin size={28} />
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

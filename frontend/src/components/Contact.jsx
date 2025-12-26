@@ -1,7 +1,7 @@
 // FILE: src/components/Contact.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, ArrowRight, Terminal } from 'lucide-react';
+import { Mail, Github, Linkedin, Smartphone, MessageCircle, Terminal } from 'lucide-react';
 import { HackerText } from './HackerText';
 import { MagneticWrapper } from './MagneticWrapper';
 
@@ -25,49 +25,77 @@ const Contact = () => {
             <Terminal className="w-8 h-8 text-emerald-400" />
           </div>
 
-
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-            <HackerText text="Ready to ship?" />
+            <HackerText text="Let's Connect" />
           </h2>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed">
             I am currently open to <span className="text-emerald-400 font-medium">Full Stack Engineer</span> roles.
-            If you need someone who can handle the entire stack—from hardware to frontend—let's talk.
+            Reach out directly via email or WhatsApp!
           </p>
         </motion.div>
 
-        {/* Action Buttons */}
+        {/* Contact Info Cards */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-col md:flex-row items-center justify-center gap-6 mb-20"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-2xl mx-auto"
         >
-          {/* Primary CTA */}
-          <MagneticWrapper className="w-full md:w-auto">
-            <a
-              href="mailto:your.email@example.com"
-              className="group relative inline-flex items-center justify-center px-8 py-4 bg-emerald-500 text-slate-950 font-bold text-lg rounded-xl hover:bg-emerald-400 transition-all duration-300 w-full shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]"
-            >
-              <Mail className="mr-3 w-5 h-5" />
-              <span>Send Email</span>
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </MagneticWrapper>
+          {/* Email Card - Click to Open Gmail */}
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=pavank5214@gmail.com"
+            target="_blank"
+            rel="noreferrer"
+            className="p-6 bg-slate-900/50 border border-slate-800 rounded-2xl flex flex-col items-center gap-4 hover:border-emerald-500/50 transition-colors cursor-pointer group"
+          >
+            <div className="p-4 bg-emerald-500/10 rounded-full group-hover:bg-emerald-500/20 transition-colors">
+              <Mail className="w-6 h-6 text-emerald-400" />
+            </div>
+            <div className="text-center">
+              <h3 className="text-slate-500 text-sm font-medium mb-1">Email</h3>
+              <p className="text-white text-lg font-semibold select-all">pavank5214@gmail.com</p>
+            </div>
+          </a>
 
-          {/* Secondary Actions */}
-          <div className="flex gap-4 w-full md:w-auto justify-center">
-            <SocialButton
-              href="https://github.com/yourusername"
-              icon={<Github className="w-5 h-5" />}
-              label="GitHub"
-            />
-            <SocialButton
-              href="https://linkedin.com/in/yourusername"
-              icon={<Linkedin className="w-5 h-5" />}
-              label="LinkedIn"
-            />
+          {/* Phone/WhatsApp Card */}
+          <div className="p-6 bg-slate-900/50 border border-slate-800 rounded-2xl flex flex-col items-center gap-4 hover:border-emerald-500/50 transition-colors">
+            <div className="p-4 bg-emerald-500/10 rounded-full">
+              <div className="flex gap-2">
+                <Smartphone className="w-6 h-6 text-emerald-400" />
+                <MessageCircle className="w-6 h-6 text-emerald-400" />
+              </div>
+            </div>
+            <div className="text-center">
+              <h3 className="text-slate-500 text-sm font-medium mb-1">Phone / WhatsApp</h3>
+              <p className="text-white text-lg font-semibold select-all">+91 9380400291</p>
+            </div>
           </div>
+        </motion.div>
+
+        {/* Action Buttons (Socials) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex flex-wrap justify-center gap-4 mb-20"
+        >
+          <SocialButton
+            href="https://github.com/Pavank5214"
+            icon={<Github className="w-5 h-5" />}
+            label="GitHub"
+          />
+          <SocialButton
+            href="https://www.linkedin.com/in/pavan-kumar-k-870a95278/"
+            icon={<Linkedin className="w-5 h-5" />}
+            label="LinkedIn"
+          />
+          <SocialButton
+            href="https://wa.me/919380400291"
+            icon={<MessageCircle className="w-5 h-5" />}
+            label="WhatsApp"
+          />
         </motion.div>
 
         {/* Footer */}
@@ -95,15 +123,16 @@ const Contact = () => {
 
 // Helper Component for Social Buttons
 const SocialButton = ({ href, icon, label }) => (
-  <MagneticWrapper>
+  <MagneticWrapper className="w-full sm:w-auto">
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center gap-2 px-6 py-4 bg-slate-900/50 backdrop-blur-md border border-slate-800/50 text-slate-300 font-medium rounded-xl hover:bg-slate-800/50 hover:text-white hover:border-slate-700 transition-all duration-300"
+      className="flex items-center justify-center gap-2 px-6 py-4 bg-slate-900/50 backdrop-blur-md border border-slate-800/50 text-slate-300 font-medium rounded-xl hover:bg-slate-800/50 hover:text-white hover:border-slate-700 transition-all duration-300 w-full"
     >
       {icon}
       <span>{label}</span>
+      {/* External Link Arrow hidden but implied by target blank */}
     </a>
   </MagneticWrapper>
 );
