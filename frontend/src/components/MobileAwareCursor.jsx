@@ -62,9 +62,9 @@ export const MobileAwareCursor = () => {
 
     return (
         <>
-            <style>{`
+            {/* <style>{`
         body, a, button { cursor: none !important; }
-      `}</style>
+      `}</style> */}
 
             <motion.div
                 className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"

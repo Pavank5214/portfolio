@@ -33,7 +33,7 @@ const Hero = () => {
     >
 
       {/* --- BACKGROUND LAYER (Interactive Parallax) --- */}
-      <div className="absolute inset-0 -z-10 bg-slate-950">
+      <div className="absolute inset-0 -z-10">
 
         {/* Interactive Grid */}
         <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]">
