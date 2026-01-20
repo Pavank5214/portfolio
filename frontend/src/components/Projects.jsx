@@ -7,55 +7,42 @@ import { HackerText } from './HackerText';
 const Projects = () => {
   const projects = [
     {
-      title: "Enterprise Invoicing SaaS",
-      category: "Full Stack Web",
-      description: "A comprehensive billing solution managing multi-tenant data, automated invoice generation, and financial reporting.",
-      tech: ["MERN Stack", "JWT Auth", "Chart.js", "RBAC"],
-      links: { demo: "#", code: "#" },
-      icon: <Shield size={20} className="text-emerald-400" />,
+      title: "E-commerce for 3D Designs",
+      category: "Full Stack & E-commerce",
+      description: "A specialized marketplace for custom 3D-printed designs with complete order lifecycle management and secure payments.",
+      tech: ["React", "Node.js", "MongoDB", "Payment Gateway"],
+      links: { demo: "https://www.anuveshanatechnologies.in/", code: "https://github.com/Pavank5214/anuveshana" },
+      icon: <ShoppingCart size={20} className="text-emerald-400" />,
       features: [
-        "Implemented Role-Based Access Control (RBAC) for data isolation.",
-        "Architected complex MongoDB aggregations for financial reports.",
-        "Built dynamic PDF generation pipeline for invoices."
+        "Implemented secure user authentication and checkout flow.",
+        "Integrated online payment gateway handling success/failure states.",
+        "Developed admin dashboard for product and order management."
       ]
     },
     {
-      title: "Edge AI Voice Assistant",
-      category: "Hardware & AI",
-      description: "A latency-optimized voice assistant running on Raspberry Pi, integrating Gemini LLM for conversational intelligence.",
-      tech: ["Python", "Raspberry Pi", "Gemini API", "WebSockets"],
-      links: { demo: null, code: "#" }, // Demo null for hardware
-      icon: <Cpu size={20} className="text-purple-400" />,
-      features: [
-        "Optimized audio buffer handling to reduce TTS latency.",
-        "Engineered fault-tolerant networking for unstable connections.",
-        "Synchronized video avatar lip-sync with audio stream."
-      ]
-    },
-    {
-      title: "Construction Firm Platform",
-      category: "Client Production",
-      description: "A high-performance digital presence for a construction business, focused on SEO, lead generation, and mobile responsiveness.",
-      tech: ["React", "Vite", "Tailwind", "EmailJS"],
-      links: { demo: "#", code: "#" },
+      title: "Construction Mgmt Dashboard",
+      category: "SaaS & AI Integration",
+      description: "A comprehensive system to track construction projects, materials, costs, and logs with AI-powered insights.",
+      tech: ["React", "Node.js", "MongoDB", "AI Integration"],
+      links: { demo: "https://buildtrack.pavankumar.site/", code: "https://github.com/Pavank5214/paripoorna" },
       icon: <Zap size={20} className="text-orange-400" />,
       features: [
-        "Achieved 95+ Lighthouse performance score via code-splitting.",
-        "Implemented custom form validation and lead routing logic.",
-        "Designed fully responsive UI for field-access on mobile devices."
+        "Integrated AI assistant to query live database via natural language.",
+        "Built interactive charts for project progress and budget limits.",
+        "Implemented role-based authentication and authorization."
       ]
     },
     {
-      title: "3D Print E-commerce",
-      category: "Backend Systems",
-      description: "A specialized marketplace for digital 3D models and physical prints, handling inventory states and secure checkout.",
-      tech: ["Node.js", "MongoDB", "Redux", "Stripe API"],
-      links: { demo: "#", code: "#" },
-      icon: <ShoppingCart size={20} className="text-blue-400" />,
+      title: "AI-Powered Billing System",
+      category: "Automation & Finance",
+      description: "A billing platform for factory operations with automated invoice generation and AI documentation parsing.",
+      tech: ["React", "Node.js", "PDF Generation", "AI Automation"],
+      links: { demo: "https://billflow.pavankumar.site/", code: "https://github.com/Pavank5214/charan" },
+      icon: <Shield size={20} className="text-blue-400" />,
       features: [
-        "Designed database schema for dual inventory (Digital vs Physical).",
-        "Implemented secure cart state management with Redux.",
-        "Integrated robust API error handling and validation middleware."
+        "Integrated AI to parse raw text into pre-filled billing forms.",
+        "Developed PDF invoice/quotation generation with email sharing.",
+        "Designed dashboards for revenue tracking and financial summaries."
       ]
     }
   ];

@@ -9,22 +9,22 @@ const Skills = () => {
     {
       title: "Backend & Systems",
       icon: <Server className="w-6 h-6 text-emerald-400" />,
-      skills: ["Node.js", "Express", "Java (Core)", "Spring Boot", "REST APIs", "Microservices"]
+      skills: ["Node.js", "Express", "Java (DSA)", "REST APIs", "Auth & RBAC", "Payment flows"]
     },
     {
       title: "Frontend Ecosystem",
       icon: <Layout className="w-6 h-6 text-blue-400" />,
-      skills: ["React.js", "Tailwind CSS", "Framer Motion", "Redux Toolkit", "Vite", "Responsive Design"]
+      skills: ["React.js", "JavaScript", "HTML / CSS", "Tailwind", "Framer Motion", "Vite"]
     },
     {
-      title: "AI & Embedded (IoT)",
+      title: "AI & Automation",
       icon: <Cpu className="w-6 h-6 text-purple-400" />,
-      skills: ["Python", "Raspberry Pi", "Gemini API", "OpenCV", "MQTT", "Edge Computing"]
+      skills: ["Python", "Gemini API", "Automation", "Raspberry Pi", "OpenCV", "IoT"]
     },
     {
       title: "Data & Tools",
       icon: <Database className="w-6 h-6 text-orange-400" />,
-      skills: ["MongoDB", "PostgreSQL", "Git/GitHub", "Docker", "Linux (Bash)", "Postman"]
+      skills: ["MongoDB Atlas", "Vercel", "Git / GitHub", "Postman", "Linux", "Docker"]
     }
   ];
 

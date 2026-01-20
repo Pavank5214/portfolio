@@ -112,7 +112,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             className="text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed"
           >
-            Full Stack Engineer (MERN + Java + IoT). I bridge the gap between hardware constraints and scalable web architecture. No fluff, just shipping.
+            Full Stack Developer (MERN + Java). Building scalable billing systems, e-commerce platforms, and AI-driven dashboards.
           </motion.p>
 
           {/* Buttons */}
@@ -155,13 +155,11 @@ const Hero = () => {
             transition={{ duration: 1, delay: 0.6 }}
             className="pt-12 flex items-center gap-6 text-slate-500 font-mono text-sm border-t border-slate-800/50 w-fit mt-8"
           >
-            <span>React</span>
+            <span>MERN Stack</span>
             <span className="text-slate-700">•</span>
-            <span>Node.js</span>
+            <span>Java (DSA)</span>
             <span className="text-slate-700">•</span>
-            <span>Java</span>
-            <span className="text-slate-700">•</span>
-            <span>IoT</span>
+            <span>AI Integration</span>
             <span className="text-slate-700">•</span>
             <span>System Design</span>
           </motion.div>
